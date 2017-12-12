@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+    <changeSet id="0001" author="sanekesv">
+        <comment>init DB</comment>
+        <sql>
+            CREATE SCHEMA bnk;
+            ALTER SCHEMA bnk
+            OWNER TO postgres;
+
+            CREATE TABLE bnk.PZN (
+            VKEY    VARCHAR(8) PRIMARY KEY NOT NULL,
+            PZN     VARCHAR(2) UNIQUE,
+            IMY     VARCHAR(10),
+            NAME    VARCHAR(255),
+            CB_DATE TIMESTAMP,
+            CE_DATE TIMESTAMP
+            );
+
+            CREATE TABLE bnk.TNP (
+            VKEY      VARCHAR(8) PRIMARY KEY NOT NULL,
+            TNP       VARCHAR(1) UNIQUE,
+            FULLNAME  VARCHAR(255),
+            SHORTNAME VARCHAR(15)
+            );
+
+            CREATE TABLE bnk.UER (
+            VKEY    VARCHAR(8) PRIMARY KEY NOT NULL,
+            UER     VARCHAR(1) UNIQUE,
+            UERNAME VARCHAR(255)
+            );
+
+            CREATE TABLE bnk.REG (
+            VKEY   VARCHAR(8) PRIMARY KEY NOT NULL,
+            RGN    VARCHAR(2) UNIQUE,
+            NAME   VARCHAR(100),
+            CENTER VARCHAR(100),
+            NAMET  VARCHAR(100)
+
+            );
+
+            CREATE TABLE bnk.BNKSEEK
+            (
+            VKEY    VARCHAR(8) PRIMARY KEY NOT NULL,
+            REAL    VARCHAR(4),
+            PZN     VARCHAR(2),
+            UER     VARCHAR(1),
+            RGN     VARCHAR(2),
+            IND     VARCHAR(6),
+            TNP     VARCHAR(1),
+            NNP     VARCHAR(25),
+            ADR     VARCHAR(30),
+            RKC     VARCHAR(9),
+            NAMEP   VARCHAR(45),
+            NAMEN   VARCHAR(30),
+            NEWNUM  VARCHAR(9),
+            NEWKS   VARCHAR(9),
+            PERMFO  VARCHAR(6),
+            SROK    VARCHAR(2),
+            AT1     VARCHAR(7),
+            AT2     VARCHAR(7),
+            TELEF   VARCHAR(25),
+            REGN    VARCHAR(9),
+            OKPO    VARCHAR(8),
+            DT_IZM  TIMESTAMP,
+            CKS     VARCHAR(6),
+            KSNP    VARCHAR(20),
+            DATE_IN TIMESTAMP,
+            DATE_CH TIMESTAMP,
+            VKEYDEL VARCHAR(8),
+            DT_IZMR TIMESTAMP
+            );
+
+            alter table bnk.BNKSEEK add CONSTRAINT
+            fk_bnkseek_pzn FOREIGN KEY (PZN)
+            REFERENCES bnk.PZN(PZN);
+            alter table bnk.BNKSEEK add CONSTRAINT
+            fk_bnkseek_tnp FOREIGN KEY (TNP)
+            REFERENCES bnk.TNP(TNP);
+            alter table bnk.BNKSEEK add CONSTRAINT
+            fk_bnkseek_uer FOREIGN KEY (UER)
+            REFERENCES bnk.UER(UER);
+            alter table bnk.BNKSEEK add CONSTRAINT
+            fk_bnkseek_reg FOREIGN KEY (RGN)
+            REFERENCES bnk.REG(RGN);
+        </sql>
+    </changeSet>
+</databaseChangeLog>
