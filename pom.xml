@@ -16,15 +16,14 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.4.5.RELEASE</version>
+        <version>1.4.2.RELEASE</version>
     </parent>
-
-
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <file.encoding>UTF-8</file.encoding>
         <logback.version>1.1.9</logback.version>
+        <database.driver>org.postgresql.Driver</database.driver>
         <database.url>jdbc:postgresql://localhost:5432/bnk</database.url>
         <database.username>postgres</database.username>
         <database.password>postgres</database.password>

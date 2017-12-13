@@ -31,11 +31,15 @@
                 <version>3.5.1</version>
                 <configuration>
                     <skip>${liquibase.skip}</skip>
-                    <propertyFile>src/main/resources/database.properties</propertyFile>
                     <includeArtifact>true</includeArtifact>
                     <promptOnNonLocalDatabase>true</promptOnNonLocalDatabase>
                     <outputFileEncoding>UTF-8</outputFileEncoding>
                     <changelogSchemaName>public</changelogSchemaName>
+                    <changeLogFile>src/main/resources/changelog/changelog-master.xml</changeLogFile>
+                    <driver>${database.driver}</driver>
+                    <url>${database.url}</url>
+                    <username>${database.username}</username>
+                    <password>${database.password}</password>
                 </configuration>
                 <dependencies>
                     <dependency>
