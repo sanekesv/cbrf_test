@@ -11,6 +11,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.web.filter.CharacterEncodingFilter;
+import javax.servlet.Filter;
 
 /**
  * @author Tim Urmancheev
@@ -37,6 +39,14 @@ public class Application extends SpringBootServletInitializer {
         dataSource.setPassword(env.getProperty("spring.datasource.password"));
         dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
         return dataSource;
+    }
+
+    @Bean
+    public Filter characterEncodingFilter() {
+        CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+        characterEncodingFilter.setEncoding("UTF-8");
+        characterEncodingFilter.setForceEncoding(true);
+        return characterEncodingFilter;
     }
 
 }
