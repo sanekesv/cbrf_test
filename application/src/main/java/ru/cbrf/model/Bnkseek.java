@@ -12,6 +12,7 @@ public class Bnkseek {
   private String vkey;
   private String real;
   private String pznCode;
+  private String uerCode;
   private String rgnCode;
   private String ind;
   private String tnpCode;
@@ -69,6 +70,16 @@ public class Bnkseek {
 
   public void setPznCode(String pznCode) {
     this.pznCode = pznCode;
+  }
+
+  @Basic
+  @Column(name = "uer", nullable = true, length = 2)
+  public String getUerCode() {
+    return uerCode;
+  }
+
+  public void setUerCode(String uerCode) {
+    this.uerCode = uerCode;
   }
 
   @Basic
@@ -381,7 +392,7 @@ public class Bnkseek {
     return result;
   }
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "pzn", referencedColumnName = "pzn", insertable = false, updatable = false)
   public Pzn getPzn() {
     return pzn;
@@ -391,7 +402,7 @@ public class Bnkseek {
     this.pzn = pzn;
   }
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "uer", referencedColumnName = "uer", insertable = false, updatable = false)
   public Uer getUer() {
     return uer;
@@ -401,7 +412,7 @@ public class Bnkseek {
     this.uer = uer;
   }
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "rgn", referencedColumnName = "rgn", insertable = false, updatable = false)
   public Reg getReg() {
     return reg;
@@ -411,7 +422,7 @@ public class Bnkseek {
     this.reg = reg;
   }
 
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "tnp", referencedColumnName = "tnp", insertable = false, updatable = false)
   public Tnp getTnp() {
     return tnp;

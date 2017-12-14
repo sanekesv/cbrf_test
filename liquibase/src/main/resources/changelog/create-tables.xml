@@ -86,4 +86,17 @@
             REFERENCES bnk.REG(RGN);
         </sql>
     </changeSet>
+    <changeSet id="0002" author="sanekesv">
+        <comment>drop constraints cause fields can be null</comment>
+        <sql>
+            alter table bnk.BNKSEEK drop CONSTRAINT
+            fk_bnkseek_pzn;
+            alter table bnk.BNKSEEK drop CONSTRAINT
+            fk_bnkseek_tnp;
+            alter table bnk.BNKSEEK drop CONSTRAINT
+            fk_bnkseek_uer;
+            alter table bnk.BNKSEEK drop CONSTRAINT
+            fk_bnkseek_reg;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
