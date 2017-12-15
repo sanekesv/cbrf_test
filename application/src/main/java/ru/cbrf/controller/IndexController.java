@@ -9,20 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.cbrf.service.LoadService;
 
 @Controller
-public class WelcomeController {
-
-  @Autowired
-  private LoadService loadService;
+public class IndexController {
 
   @RequestMapping("/")
   public String welcome(Map<String, Object> model) {
     return "welcome";
   }
 
-
-  @RequestMapping("/load/dbf")
-  public String loadDbf(Map<String, Object> map) {
-    loadService.loadData();
-    return "redirect:/";
+  @RequestMapping("/view/data")
+  public String viewDataPage(){
+    return "dataPage";
   }
+
+
 }

@@ -42,7 +42,6 @@
 
             CREATE TABLE bnk.BNKSEEK
             (
-            VKEY    VARCHAR(8) PRIMARY KEY NOT NULL,
             REAL    VARCHAR(4),
             PZN     VARCHAR(2),
             UER     VARCHAR(1),
@@ -54,7 +53,7 @@
             RKC     VARCHAR(9),
             NAMEP   VARCHAR(45),
             NAMEN   VARCHAR(30),
-            NEWNUM  VARCHAR(9),
+            NEWNUM  VARCHAR(9)  PRIMARY KEY NOT NULL,
             NEWKS   VARCHAR(9),
             PERMFO  VARCHAR(6),
             SROK    VARCHAR(2),

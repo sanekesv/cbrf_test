@@ -7,10 +7,14 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 import com.linuxense.javadbf.DBFReader;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.cbrf.dao.*;
 import ru.cbrf.model.*;
@@ -35,13 +39,13 @@ public class LoadService {
   @Autowired
   private UerDao uerDao;
 
-  public void loadData() {
+  public void loadData() throws FileNotFoundException {
 //    try {
-//      loadPzn();
-//      loadReg();
-//      loadTnp();
-//      loadUer();
-//      loadBnkseek();
+      loadPzn();
+      loadReg();
+      loadTnp();
+      loadUer();
+      loadBnkseek();
 //    }
 //    catch (IOException e) {
 //      e.printStackTrace();
@@ -152,7 +156,7 @@ public class LoadService {
 
   private Bnkseek getBnkseekModel(Object[] row) {
     Bnkseek bnkseek = new Bnkseek();
-    bnkseek.setVkey(convertToString(row[0]));
+//    bnkseek.setVkey(convertToString(row[0]));
     bnkseek.setReal(convertToString(row[1]));
     bnkseek.setPznCode(convertToString(row[2]));
     bnkseek.setUerCode(convertToString(row[3]));
@@ -196,5 +200,37 @@ public class LoadService {
     if(s.equals(""))
       return null;
     return s;
+  }
+
+  public List<Pzn> getAllPzn() {
+    return pznDao.findAll();
+  }
+
+  public List<Reg> getAllReg() {
+    return regDao.findAll();
+  }
+
+  public List<Tnp> getAllTnp() {
+    return tnpDao.findAll();
+  }
+
+  public List<Uer> getAllUer() {
+    return uerDao.findAll();
+  }
+
+  public Page<Bnkseek> getAllBnkseek(int page) {
+    Pageable pageable = new PageRequest(page, 20);
+    return bnkseekDao.findAll(pageable);
+  }
+
+  public Page<Bnkseek> getBnkseekByNamep(String rkc, String reg, String pzn, int page) {
+    Pageable pageable = new PageRequest(page, 20);
+    if(rkc == null && reg == null && pzn ==null)
+      return bnkseekDao.findAll(pageable);
+    Page<Bnkseek> byNamep = bnkseekDao.findAllByRkcAndRegAndPzn(rkc!=null?rkc:"",
+        reg!=null?reg.toUpperCase():"",
+        pzn!=null?pzn:"", pageable);
+    return byNamep;
+
   }
 }

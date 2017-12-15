@@ -150,6 +150,13 @@
             <artifactId>angularjs</artifactId>
             <version>1.3.8</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.webjars/angular-xeditable -->
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>angular-xeditable</artifactId>
+            <version>0.1.8</version>
+        </dependency>
+
 
         <dependency>
             <groupId>com.github.albfernandez</groupId>

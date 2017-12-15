@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "bnkseek", schema = "bnk")
 public class Bnkseek {
-  private String vkey;
+//  private String vkey;
   private String real;
   private String pznCode;
   private String uerCode;
@@ -37,20 +37,19 @@ public class Bnkseek {
   private Timestamp dateCh;
   private String vkeydel;
   private Timestamp dtIzmr;
-  private Pzn pzn;
-  private Uer uer;
-  private Reg reg;
-  private Tnp tnp;
+//  private Pzn pzn;
+//  private Uer uer;
+//  private Reg reg;
+//  private Tnp tnp;
 
-  @Id
-  @Column(name = "vkey", nullable = false, length = 8)
-  public String getVkey() {
-    return vkey;
-  }
-
-  public void setVkey(String vkey) {
-    this.vkey = vkey;
-  }
+//  @Column(name = "vkey", nullable = false, length = 8)
+//  public String getVkey() {
+//    return vkey;
+//  }
+//
+//  public void setVkey(String vkey) {
+//    this.vkey = vkey;
+//  }
 
   @Basic
   @Column(name = "real", nullable = true, length = 4)
@@ -162,7 +161,7 @@ public class Bnkseek {
     this.namen = namen;
   }
 
-  @Basic
+  @Id
   @Column(name = "newnum", nullable = true, length = 9)
   public String getNewnum() {
     return newnum;
@@ -329,7 +328,7 @@ public class Bnkseek {
 
     Bnkseek bnkseek = (Bnkseek) o;
 
-    if (vkey != null ? !vkey.equals(bnkseek.vkey) : bnkseek.vkey != null) return false;
+//    if (vkey != null ? !vkey.equals(bnkseek.vkey) : bnkseek.vkey != null) return false;
     if (real != null ? !real.equals(bnkseek.real) : bnkseek.real != null) return false;
     if (pznCode != null ? !pznCode.equals(bnkseek.pznCode) : bnkseek.pznCode != null) return false;
     if (rgnCode != null ? !rgnCode.equals(bnkseek.rgnCode) : bnkseek.rgnCode != null) return false;
@@ -362,8 +361,8 @@ public class Bnkseek {
 
   @Override
   public int hashCode() {
-    int result = vkey != null ? vkey.hashCode() : 0;
-    result = 31 * result + (real != null ? real.hashCode() : 0);
+//    int result = vkey != null ? vkey.hashCode() : 0;
+    int result = real != null ? real.hashCode() : 0;
     result = 31 * result + (pznCode != null ? pznCode.hashCode() : 0);
     result = 31 * result + (rgnCode != null ? rgnCode.hashCode() : 0);
     result = 31 * result + (ind != null ? ind.hashCode() : 0);
@@ -392,43 +391,43 @@ public class Bnkseek {
     return result;
   }
 
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "pzn", referencedColumnName = "pzn", insertable = false, updatable = false)
-  public Pzn getPzn() {
-    return pzn;
-  }
-
-  public void setPzn(Pzn pzn) {
-    this.pzn = pzn;
-  }
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "uer", referencedColumnName = "uer", insertable = false, updatable = false)
-  public Uer getUer() {
-    return uer;
-  }
-
-  public void setUer(Uer uer) {
-    this.uer = uer;
-  }
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "rgn", referencedColumnName = "rgn", insertable = false, updatable = false)
-  public Reg getReg() {
-    return reg;
-  }
-
-  public void setReg(Reg reg) {
-    this.reg = reg;
-  }
-
-  @ManyToOne(fetch = FetchType.LAZY)
-  @JoinColumn(name = "tnp", referencedColumnName = "tnp", insertable = false, updatable = false)
-  public Tnp getTnp() {
-    return tnp;
-  }
-
-  public void setTnp(Tnp tnp) {
-    this.tnp = tnp;
-  }
+//  @ManyToOne(fetch = FetchType.LAZY)
+//  @JoinColumn(name = "pzn", referencedColumnName = "pzn", insertable = false, updatable = false)
+//  public Pzn getPzn() {
+//    return pzn;
+//  }
+//
+//  public void setPzn(Pzn pzn) {
+//    this.pzn = pzn;
+//  }
+//
+//  @ManyToOne(fetch = FetchType.LAZY)
+//  @JoinColumn(name = "uer", referencedColumnName = "uer", insertable = false, updatable = false)
+//  public Uer getUer() {
+//    return uer;
+//  }
+//
+//  public void setUer(Uer uer) {
+//    this.uer = uer;
+//  }
+//
+//  @ManyToOne(fetch = FetchType.LAZY)
+//  @JoinColumn(name = "rgn", referencedColumnName = "rgn", insertable = false, updatable = false)
+//  public Reg getReg() {
+//    return reg;
+//  }
+//
+//  public void setReg(Reg reg) {
+//    this.reg = reg;
+//  }
+//
+//  @ManyToOne(fetch = FetchType.LAZY)
+//  @JoinColumn(name = "tnp", referencedColumnName = "tnp", insertable = false, updatable = false)
+//  public Tnp getTnp() {
+//    return tnp;
+//  }
+//
+//  public void setTnp(Tnp tnp) {
+//    this.tnp = tnp;
+//  }
 }

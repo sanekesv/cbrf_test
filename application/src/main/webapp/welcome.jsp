@@ -16,8 +16,9 @@
 </head>
 <body ng-app="CBRFApp" ng-controller="indexPageController">
 <div class="container">
-
-  <input type="button" class="btn btn-default" ng-click="loadDbf()" value="Загрузить">
+{{serverResponse}}<br>
+  <input id="loadButton" type="button" class="btn btn-default" ng-click="loadDbf()" value="Загрузить">
+  <input id="goToTable" type="button" class="btn btn-default" ng-click="goToTable()" value="Перейти к просмотру данных">
 </div>
 <div class="invisible load">
   <div class="loader"></div>
