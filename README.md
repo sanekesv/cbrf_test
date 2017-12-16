@@ -8,13 +8,16 @@
 <li>замените url для подключения к базе в pom.xml</li>
 
 ````
-&lt;database.url>jdbc:postgresql://localhost:5432/bnk&lt;/database.url>
-&lt;database.username>postgres&lt;/database.username></br>
-&lt;database.password>postgres&lt;/database.password></br>
+<database.url>jdbc:postgresql://localhost:5432/bnk</database.url>
+<database.username>postgres</database.username></br>
+<database.password>postgres</database.password></br>
 ````
 
 <li>замените путь до проекта в pom.xml</li>
-&lt;dbf.full.path>/Users/sanekesv/IdeaProjects/&lt;/dbf.full.path>
+
+````
+<dbf.full.path>/Users/sanekesv/IdeaProjects/</dbf.full.path>
+````
 
 ## Сборка и установка
 <li>в папке проекта выполните</li>
