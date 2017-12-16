@@ -27,7 +27,7 @@
         <database.url>jdbc:postgresql://localhost:5432/bnk</database.url>
         <database.username>postgres</database.username>
         <database.password>postgres</database.password>
-        <dbf.full.path>C:/Users/ermolaev/IdeaProjects/</dbf.full.path>
+        <dbf.full.path>/Users/sanekesv/IdeaProjects/</dbf.full.path>
     </properties>
 
     <dependencies>

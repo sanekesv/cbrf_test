@@ -5,8 +5,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
 <head>
-  <script src="webjars/jquery/2.1.1/jquery.min.js"></script>
-  <script src="webjars/angularjs/1.3.8/angular.min.js"></script>
+  <script src="/webjars/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/webjars/angularjs/1.6.4/angular.min.js"></script>
   <script src="/js/indexPageController.js"></script>
 
   <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>

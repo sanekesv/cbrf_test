@@ -1,7 +1,5 @@
 package ru.cbrf;
 
-import javax.sql.DataSource;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,11 +10,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import javax.servlet.Filter;
 
-/**
- * @author Tim Urmancheev
- */
+import javax.servlet.Filter;
+import javax.sql.DataSource;
+
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan("ru.cbrf")
