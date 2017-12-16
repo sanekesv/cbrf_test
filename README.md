@@ -5,7 +5,7 @@
 </br>
 ## Перед запуском:</br>
 <li>создайте базу данных в Postgres</li>
-<li>замените url для подключения к базе в pom.xml</li>
+<li>замените url, логин и пароль для подключения к базе в pom.xml</li>
 
 ````
 <database.url>jdbc:postgresql://localhost:5432/bnk</database.url>
