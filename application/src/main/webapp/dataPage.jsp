@@ -38,16 +38,16 @@
                         <div class="form-group">
                             <label class="filter-col" style="margin-right:0;" for="pref-bik">БИК:</label>
                             <input type="text" class="form-control input-sm" id="pref-bik" ng-model="search.bik"
-                                   ng-change="filtering()">
+                                   ng-change="setPage(0)">
                         </div>
                         <div class="form-group">
                             <label class="filter-col" style="margin-right:0;" for="pref-region">Регион:</label>
                             <input type="text" class="form-control input-sm" id="pref-region" ng-model="search.region"
-                                   ng-change="filtering()">
+                                   ng-change="setPage(0)">
                         </div>
                         <div class="form-group">
                             <label class="filter-col" style="margin-right:0;" for="pref-pzn">Тип:</label>
-                            <select id="pref-pzn" class="form-control" ng-model="search.pzn" ng-change="filtering()">
+                            <select id="pref-pzn" class="form-control" ng-model="search.pzn" ng-change="setPage(0)">
                                 <option value="">Не выбрано</option>
                                 <option ng-repeat="p in pzn" value="{{p.pzn}}">{{p.name}}</option>
                             </select>
@@ -101,13 +101,13 @@
         </span>
                 </td>
                 <td>
-        <span editable-select="bnk.uerCode" e-name="uerCode" e-form="rowform"
+        <span editable-select="bnk.uerCode" e-name="uerCode" e-form="rowform" onbeforesave="checkNotNull($data)"
               e-ng-options="p.uer as p.uername for p in uer">
           {{ showUer(bnk) }}
         </span>
                 </td>
                 <td>
-        <span editable-select="bnk.rgnCode" e-name="rngCode" e-form="rowform"
+        <span editable-select="bnk.rgnCode" e-name="rgnCode" e-form="rowform" onbeforesave="checkNotNull($data)"
               e-ng-options="p.rgn as p.name for p in reg">
           {{ showReg(bnk) }}
         </span>
@@ -139,7 +139,7 @@
         </span>
                 </td>
                 <td>
-        <span editable-text="bnk.namep" e-name="namep" e-form="rowform">
+        <span editable-text="bnk.namep" e-name="namep" e-form="rowform" onbeforesave="checkNotNull($data)">
           {{ bnk.namep }}
         </span>
                 </td>
@@ -165,7 +165,8 @@
                 </td>
                 <td>
         <span editable-bsdate="bnk.dtIzm" e-name="dtIzm" e-form="rowform" e-is-open="opened.dtIzm{{bnk.newnum}}"
-              e-ng-click="open($event,'dtIzm', bnk.newnum)" e-datepicker-popup="dd-MMMM-yyyy">
+              e-ng-click="open($event,'dtIzm', bnk.newnum)" e-datepicker-popup="dd-MMMM-yyyy"
+              onbeforesave="checkNotNull($data)">
           {{ bnk.dtIzm | date:'dd-MMMM-yyyy' }}
         </span>
                 </td>
@@ -176,7 +177,8 @@
                 </td>
                 <td>
         <span editable-bsdate="bnk.dateIn" e-name="dateIn" e-form="rowform" e-is-open="opened.dateIn{{bnk.newnum}}"
-              e-ng-click="open($event,'dateIn', bnk.newnum)" e-datepicker-popup="dd-MMMM-yyyy">
+              e-ng-click="open($event,'dateIn', bnk.newnum)" e-datepicker-popup="dd-MMMM-yyyy"
+              onbeforesave="checkNotNull($data)">
           {{ bnk.dateIn | date:'dd-MMMM-yyyy' }}
         </span>
                 </td>

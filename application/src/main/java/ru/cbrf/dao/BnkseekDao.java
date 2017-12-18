@@ -15,15 +15,15 @@ public interface BnkseekDao extends JpaRepository<Bnkseek, String> {
 
     @Query(value = "select b.* from bnk.Bnkseek b\n" +
         "    left JOIN bnk.reg r on r.rgn=b.rgn \n" +
-        "where rkc like ('%' || ?1 ||'%') " +
-            "and (r.name like ('%' || ?2 || '%') or (b.rgn is null and ?2='')) " +
-        "and pzn like ('%' || ?3 || '%') " +
+            "where (rkc like ('%' || ?1 ||'%') or (rkc is null and ?1=''))" +
+            "and (r.name like ('%' || ?2 || '%')) " +
+            "and (pzn = ?3 or ?3='') " +
         "\n-- #pageable\n",
         countQuery = "select count(*) from bnk.Bnkseek b\n" +
             "    left JOIN bnk.reg r on r.rgn=b.rgn\n" +
-            "where rkc like ('%' || ?1 ||'%') " +
-                "and (r.name like ('%' || ?2 || '%') or (b.rgn is null and ?2='')) " +
-            "and pzn like ('%' || ?3 || '%') ",
+                "where (rkc like ('%' || ?1 ||'%') or (rkc is null and ?1='')) " +
+                "and (r.name like ('%' || ?2 || '%')) " +
+                "and (pzn = ?3 or ?3='') ",
         nativeQuery = true
     )
     Page<Bnkseek> findAllByRkcAndRegAndPzn(String rkc, String reg, String pzn, Pageable pageable);

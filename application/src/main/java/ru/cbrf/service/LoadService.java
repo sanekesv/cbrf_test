@@ -196,8 +196,7 @@ public class LoadService {
 
     private String convertToString(Object o) {
         String s = (String) o;
-        if (s.equals(""))
-            return null;
+        if (s != null && (s.equals("") || s.length() == 0)) return null;
         return s;
     }
 

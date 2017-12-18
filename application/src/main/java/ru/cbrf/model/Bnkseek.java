@@ -1,7 +1,7 @@
 package ru.cbrf.model;
 
-import java.sql.Timestamp;
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
  * Created by ermolaev on 13.12.2017.
@@ -37,19 +37,6 @@ public class Bnkseek {
   private Timestamp dateCh;
   private String vkeydel;
   private Timestamp dtIzmr;
-//  private Pzn pzn;
-//  private Uer uer;
-//  private Reg reg;
-//  private Tnp tnp;
-
-//  @Column(name = "vkey", nullable = false, length = 8)
-//  public String getVkey() {
-//    return vkey;
-//  }
-//
-//  public void setVkey(String vkey) {
-//    this.vkey = vkey;
-//  }
 
   @Basic
   @Column(name = "real", nullable = true, length = 4)
@@ -72,7 +59,7 @@ public class Bnkseek {
   }
 
   @Basic
-  @Column(name = "uer", nullable = true, length = 2)
+  @Column(name = "uer", nullable = false, length = 2)
   public String getUerCode() {
     return uerCode;
   }
@@ -82,7 +69,7 @@ public class Bnkseek {
   }
 
   @Basic
-  @Column(name = "rgn", nullable = true, length = 2)
+  @Column(name = "rgn", nullable = false, length = 2)
   public String getRgnCode() {
     return rgnCode;
   }
@@ -142,7 +129,7 @@ public class Bnkseek {
   }
 
   @Basic
-  @Column(name = "namep", nullable = true, length = 45)
+  @Column(name = "namep", nullable = false, length = 45)
   public String getNamep() {
     return namep;
   }
@@ -162,7 +149,7 @@ public class Bnkseek {
   }
 
   @Id
-  @Column(name = "newnum", nullable = true, length = 9)
+  @Column(name = "newnum", nullable = false, length = 9)
   public String getNewnum() {
     return newnum;
   }
@@ -252,7 +239,7 @@ public class Bnkseek {
   }
 
   @Basic
-  @Column(name = "dt_izm", nullable = true)
+  @Column(name = "dt_izm", nullable = false)
   public Timestamp getDtIzm() {
     return dtIzm;
   }
@@ -282,7 +269,7 @@ public class Bnkseek {
   }
 
   @Basic
-  @Column(name = "date_in", nullable = true)
+  @Column(name = "date_in", nullable = false)
   public Timestamp getDateIn() {
     return dateIn;
   }
@@ -354,14 +341,11 @@ public class Bnkseek {
     if (dateIn != null ? !dateIn.equals(bnkseek.dateIn) : bnkseek.dateIn != null) return false;
     if (dateCh != null ? !dateCh.equals(bnkseek.dateCh) : bnkseek.dateCh != null) return false;
     if (vkeydel != null ? !vkeydel.equals(bnkseek.vkeydel) : bnkseek.vkeydel != null) return false;
-    if (dtIzmr != null ? !dtIzmr.equals(bnkseek.dtIzmr) : bnkseek.dtIzmr != null) return false;
-
-    return true;
+    return dtIzmr != null ? dtIzmr.equals(bnkseek.dtIzmr) : bnkseek.dtIzmr == null;
   }
 
   @Override
   public int hashCode() {
-//    int result = vkey != null ? vkey.hashCode() : 0;
     int result = real != null ? real.hashCode() : 0;
     result = 31 * result + (pznCode != null ? pznCode.hashCode() : 0);
     result = 31 * result + (rgnCode != null ? rgnCode.hashCode() : 0);
@@ -391,43 +375,4 @@ public class Bnkseek {
     return result;
   }
 
-//  @ManyToOne(fetch = FetchType.LAZY)
-//  @JoinColumn(name = "pzn", referencedColumnName = "pzn", insertable = false, updatable = false)
-//  public Pzn getPzn() {
-//    return pzn;
-//  }
-//
-//  public void setPzn(Pzn pzn) {
-//    this.pzn = pzn;
-//  }
-//
-//  @ManyToOne(fetch = FetchType.LAZY)
-//  @JoinColumn(name = "uer", referencedColumnName = "uer", insertable = false, updatable = false)
-//  public Uer getUer() {
-//    return uer;
-//  }
-//
-//  public void setUer(Uer uer) {
-//    this.uer = uer;
-//  }
-//
-//  @ManyToOne(fetch = FetchType.LAZY)
-//  @JoinColumn(name = "rgn", referencedColumnName = "rgn", insertable = false, updatable = false)
-//  public Reg getReg() {
-//    return reg;
-//  }
-//
-//  public void setReg(Reg reg) {
-//    this.reg = reg;
-//  }
-//
-//  @ManyToOne(fetch = FetchType.LAZY)
-//  @JoinColumn(name = "tnp", referencedColumnName = "tnp", insertable = false, updatable = false)
-//  public Tnp getTnp() {
-//    return tnp;
-//  }
-//
-//  public void setTnp(Tnp tnp) {
-//    this.tnp = tnp;
-//  }
 }

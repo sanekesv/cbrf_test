@@ -47,7 +47,7 @@ angular.module('CBRFApp', ["xeditable", "ui.bootstrap"])
         };
 
         function loadBnkseek() {
-            return $http.get('/load/bnkseek?page=' + $scope.currentPage).then(function (data) {
+            return $http.get('/load/bnkseek?page=0').then(function (data) {
                 $scope.bnkseek = data.data.content;
                 getPages(data.data.totalPages, $scope.currentPage);
                 $scope.totalPages = data.totalPages - 1;
@@ -55,7 +55,6 @@ angular.module('CBRFApp', ["xeditable", "ui.bootstrap"])
         }
 
         $scope.filtering = function () {
-            $scope.currentPage = 0;
             return $http.get('/load/bnkseek?page=' + ($scope.currentPage) + '&pzn=' + $scope.search.pzn + '&reg=' + $scope.search.region + '&rkc=' + $scope.search.bik).then(function (data) {
                 $scope.bnkseek = data.data.content;
                 getPages(data.data.totalPages, $scope.currentPage);
@@ -69,7 +68,7 @@ angular.module('CBRFApp', ["xeditable", "ui.bootstrap"])
             if (page > $scope.totalPages)
                 page = $scope.totalPages;
             $scope.currentPage = page;
-            loadBnkseek();
+            $scope.filtering();
         };
         $scope.showPzn = function (bnk) {
             var selected = [];
@@ -101,8 +100,12 @@ angular.module('CBRFApp', ["xeditable", "ui.bootstrap"])
         };
 
         $scope.saveBnk = function (data) {
-            // angular.extend(data, {newnum: id});
             return $http.post('/load/save', data);
+        };
+
+        $scope.checkNotNull = function (data) {
+            if (data == null)
+                return 'field required';
         };
 
         function getPages(totalPages, currentPage) {

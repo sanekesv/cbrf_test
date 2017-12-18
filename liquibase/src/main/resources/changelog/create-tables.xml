@@ -98,4 +98,16 @@
             fk_bnkseek_reg;
         </sql>
     </changeSet>
+    <changeSet id="0003" author="sanekesv">
+        <comment>add not null constraints</comment>
+        <sql>
+            ALTER TABLE bnk.bnkseek ALTER COLUMN uer SET NOT NULL;
+            ALTER TABLE bnk.bnkseek ALTER COLUMN rgn SET NOT NULL;
+            ALTER TABLE bnk.bnkseek ALTER COLUMN namep SET NOT NULL;
+            ALTER TABLE bnk.bnkseek ALTER COLUMN newnum SET NOT NULL;
+            ALTER TABLE bnk.bnkseek ALTER COLUMN dt_izm SET NOT NULL;
+            ALTER TABLE bnk.bnkseek ALTER COLUMN date_in SET NOT NULL;
+
+        </sql>
+    </changeSet>
 </databaseChangeLog>

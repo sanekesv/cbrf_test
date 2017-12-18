@@ -43,3 +43,7 @@ body {
     overflow: auto;
     white-space: nowrap;
 }
+
+.has-error {
+    border-color: #a94442;
+}
